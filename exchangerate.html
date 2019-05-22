@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kursy walut</title>
+        <meta charset="UTF-8">
+        <script
+            src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+            crossorigin="anonymous">
+         </script>
+    </head>
+    
+    <body>
+    	<div id="tabs-1">
+			<button id="but1">Get rates</button>
+		</div>
+        
+        <h1>Kurs GBP:</h1>
+        <p id="GBP"></p>
+        
+        <h1>Kurs USD:</h1>
+        <p id="USD"></p>
+        
+        <h1>Kurs EUR:</h1>
+        <p id="EUR"></p>
+        
+        <h1>Kurs CHF:</h1>
+        <p id="CHF"></p>
+
+        <script>
+        	$(document).ready(function() {
+		
+				$("#but1").click( function() {
+
+					$.get('http://api.nbp.pl/api/exchangerates/tables/a/?format=json')
+						.done(function(data){
+							for (var i = data[0].rates.length - 1; i >= 0; i--) {
+								switch(data[0].rates[i].code){
+									case 'GBP':
+										$('#GBP').text(data[0].rates[i].mid);
+										break; 
+									case 'USD':
+										$('#USD').text(data[0].rates[i].mid);
+										break;
+									case 'EUR':
+										$('#EUR').text(data[0].rates[i].mid);
+										break;
+									case 'CHF':
+										$('#CHF').text(data[0].rates[i].mid);
+										break; 
+								}
+						
+							/*if(data[0].rates[i].code == 'GBP'){
+								$('#GBP').text(data[0].rates[i].code);
+							}*/
+							//$('#USD').text(data.rates[0].mid);
+						}
+					});
+
+				});
+			});
+        </script>
+    </body>
+</html>

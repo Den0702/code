@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Loading a text from txt</title>
+	<script src="jquery.js"></script>
+	<script>
+	//<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	$(document).ready(function(){
+		$( "button" ).click(function(){
+			$( "#div1" ).load("my_film.txt", function( responseTxt, statusTxt, xhr ){
+				if( statusTxt == "success" ) { alert(  "External content loaded successfully!");}
+				else if( statusTxt == "error" ){ alert("Error: " + xhr.status + ": " + xhr.statusText ); }
+						else{ alert("Undefined Error " ); }
+	    });
+	  });
+	});
+	</script>
+</head>
+<body>
+
+<div id="div1"><h2>Startowy text</h2></div>
+
+<button>biorę tekst</button>
+
+</body>
+</html>

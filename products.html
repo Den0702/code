@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>Product </title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            font-size: 22px;
+            border: solid 2px lightblue;
+            padding: 6px;
+        }
+
+        input.num {
+            text-align: right;
+            border: solid 1px lightblue;
+            font-size: 22px;
+        }
+
+        input.desription {
+            text-align: left;
+            border: solid 1px lightblue;
+            font-size: 22px;
+        }
+
+        td.instock {
+            text-align: center;
+            border: solid 1px lightblue;
+            font-size: 22px;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        /*
+        "id": 234,
+        "name": "Oriental Book Style Box",
+        "price": 12.5,
+        "instock": true
+        */
+        function mark_stock() {
+            //alert(document.getElementById( "instock" ).innerHTML);
+            if (document.getElementById("instock").innerHTML == "Yes") {
+                document.getElementById("instock").innerHTML = "No"
+            }
+            else { document.getElementById("instock").innerHTML = "Yes" }
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td> id: </td>
+            <td><input type=text size=6 id=x_id name=x_id value="" class=num /></td>
+        </tr>
+        <tr>
+            <td> name: </td>
+            <td><input type=text size=40 id=p_name name=p_name value="" class=desription /></td>
+        </tr>
+        <tr>
+            <td> price: </td>
+            <td><input type=text size=40 id=price name=price value="" class=num /></td>
+        </tr>
+        <tr>
+            <td> instock: </td>
+            <td class=instock onclick=mark_stock(); id=instock>Yes</td>
+        </tr>
+    </table>
+    <div class="buttons">
+        <input type="button" value="Previous" class=prev>
+        <input type="button" value="Next" class="next">
+    </div>
+</body>
+</html>

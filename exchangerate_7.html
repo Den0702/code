@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Kursy walut</title>
+      <meta charset="UTF-8">
+	<style>
+		/*==========  Green  ==========*/
+    div.green {
+        text-align:center;
+        cursor:pointer;
+        width:600px; font-size:24px;
+        background: #7cc576;
+        color: #fff;
+        border: 1px solid #46963f;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 5px 0px #46963f;
+        -moz-box-shadow: 0px 5px 0px #46963f;
+        -ms-box-shadow: 0px 5px 0px #46963f;
+        -o-box-shadow: 0px 5px 0px #46963f;
+        box-shadow: 0px 5px 0px #46963f;
+        text-shadow: 1px 1px 1px #46963f;     
+    }
+     div.green:active {
+        position: relative;
+        top: 5px;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        -ms-box-shadow: none !important;
+        -o-box-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-transition: All 250ms ease;
+        -moz-transition: All 250ms ease;
+        -o-transition: All 250ms ease;
+        -ms-transition: All 250ms ease;
+        transition: All 250ms ease;
+      }
+      p{ 
+        font-size: 20px;
+      }
+      table{ border-collapse:collapse; position: absolute; top:80px;}
+      td{ border:solid 2px lightblue ; width:150px; padding:8px}
+      td.num{ text-align:right;}
+      td.band{ text-align:center;}
+	</style>
+  
+  <script
+    src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous">         
+  </script>      
+  
+  <script>    
+    function get_posel_all(){
+              //$.get('http://api.nbp.pl/api/exchangerates/tables/a/?format=json')
+        //$.get('https://api-v3.mojepanstwo.pl/dane/poslowie.json')
+        //$.get('https://api-v3.mojepanstwo.pl/dane/poslowie.json?conditions[poslowie.kadencja]=8')
+        $.get('https://api-v3.mojepanstwo.pl/dane/poslowie.json')   
+          .done(function(data){
+            var s = JSON.stringify(data)
+            console.log(s);
+            //document.write( s  );
+            var limit = data.Dataobject.length;
+            //alert( limit );
+            var i;
+            for ( i = 0; i<  limit ; i++ ) {
+              document.write(i + " poseł id: " + data.Dataobject[ i ].id );
+                document.write( "<br>");
+              document.write(" Imie : " + data.Dataobject[ i ].slug );
+                document.write( "<br>");            
+            };
+            return; 
+          });
+      }
+      /*
+      Bid – calculated currency buy exchange rate (concerns table C) (for table C only)
+  Ask – calculated currency sell exchange rate (concerns table C) ()
+  Mid – calculated currency average exchange rate (for tables A and B)
+  */
+  </script>
+  </head>
+
+  <body>
+    <div class="green" onclick=get_posel_all()> wyświetlić imiona wszystkich posłów</div>  
+  </body>
+</html>

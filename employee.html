@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Employee</title>
+		<meta charset="UTF-8">
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+		<h1>Employee</h1>
+		<p id = "div1"></p>
+		
+		<script>
+			// a JavaScript code here ...
+			$(document).ready(function(){
+				$.get('./employee.json')			
+				.done(function(data){
+						//var paragraphElem = $('<p>'+ JSON.parse(data.userId) + '</p><br>');
+						/*var paragraphElem = $('<p>UserID:' + data.userId + '</p><br>' +
+						'<p>jobTitleName:' + data.jobTitleName + '</p><br>' + 
+						'<p>firstName:' + data.firstName + '<p>')
+						$('#div1').append(paragraphElem);*/
+						for (var key in data) {
+							var element = $('<p>' + data[key] + '<p><br>');
+							$('#div1').append(element);
+						}
+				});	
+			})
+		</script>
+	</body>
+</html>
