@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+<form id='authForm'>
+    <p>Username <input name='uname'></p>
+    <p>Password <input name='pass'></p>
+    <button>login</button>
+</form>
+<p id='textPlace'></p>
+</body>
+<body>
+    <script>
+        // При нажатии на кнопку происходит эвент submit, мы его перехватываем
+        authForm.addEventListener('submit', handleSubmit);
+
+
+        function handleSubmit(e) {
+            // отменяем поведение по умолчанию для формы, чтобы она не отправилась 
+            // (иначе произойдет переход на другую страницу, нам это не надо)
+            e.preventDefault();
+
+            // достаем из локального хранилица сохраненные значения (если их не было, будет null)
+            var savedUsername = localStorage.getItem('username');
+            var savedPassword = localStorage.getItem('password');
+
+            // получаем введенные значения
+            // authForm - элемент формы
+            // authForm['inputname'] - у формы так можно легко получить доступ к дочернему элементу с аттрибутом name='inputname'
+            var username = authForm['uname'].value;
+            var password = authForm['pass'].value;
+
+            if (savedUsername && savedPassword) { // если в локальном хранилище были ранее созранены значения 
+                if (savedUsername === username && savedPassword === password) {
+                    textPlace.textContent = 'Успешный вход!';
+                } else {
+                    textPlace.textContent = 'Неверные логин или пароль!';
+                }
+            } else {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                textPlace.textContent = 'Данные сохранены!';
+            }
+
+        }
+    </script>
+
+</html>
