@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <input type="button" value="Нажми" />
+
+  <script>
+    var button = document.querySelector("[type=button]");
+    function handler() {
+      alert("1");
+    }
+
+    button.addEventListener("click", handler);
+    button.removeEventListener("click", handler);
+    button.onclick = function () { alert(2); };
+  </script>
+</body>
+
+</html>
