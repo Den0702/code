@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Show checkboxes:</h1>
+    <form id="form1">
+        <input type="checkbox" name = "box">check1<br>
+        <input type="checkbox" name = "box">check2<br>
+        <input type="checkbox" name = "box">check3<br>
+        <input type="checkbox" name = "box">check4<br>
+        <input type="checkbox" name = "box">check5<br>
+        
+		<input type="button" onclick = "check()" value="Submit">
+    </form>
+   
+	<script>
+      function check() {
+        var boxes = document.querySelectorAll("#form1 [type=checkbox]");
+        var sum = 0;
+        for(var i=0; i < boxes.length; i++){
+          if(boxes[i].checked){
+            sum++;
+          }
+        }
+        alert(sum + " elements selected");
+      }
+    </script>        
+</body>
+
+</html>

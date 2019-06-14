@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <p>Tennis</p>
+  <p>Basketball</p>
+  <p>Box</p>
+  
+  <script>
+    document.body.onclick = function (e) {
+      var target = e.target;
+      var parent = e.target.parentElement;
+      parent.insertBefore(target, parent.firstChild);
+    }
+  </script>
+</body>
+
+</html>
